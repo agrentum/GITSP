@@ -153,3 +153,20 @@
 (defun *NOT-ONEP* (number1 number2)
   (format t "Is ~D = ~D + 1? ~S~%" number1 number2 (equal number1 (*ADD1* number2)))
   (equal number1 (*ADD1* number2)))
+
+;; Solution to problem 1-16
+(defun *NOT-PLUSP* (number)
+  (not (< number 0)))
+
+;; Solution to problem 1-17
+(defun *EVENP* (number)
+  (not (oddp number)))
+
+;; Solution to problem 1-18
+; (x + 1) + 1 == 0 <=> x == -2
+(defun *1-18* (number)
+  (zerop (*ADD1* (*ADD1* number))))
+
+;; Solution to problem 1-20
+(defun *XOR* (a b)
+  (and (not (and a b)) (or a b)))
