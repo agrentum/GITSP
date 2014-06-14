@@ -4,11 +4,6 @@
 ;;;; To finish some rough edges I have supplemented myself with tutorial
 ;;;; http://www.n-a-n-o.com/lisp/cmucl-tutorials/LISP-tutorial.html  [2]
 
-;;; Everything here was coded in Emacs 23 with SLIME.
-;;; +++++
-;;; Stallman protects.
-;;; +++++
-
 ;; Before anything else: I'm mostly a C programmer, far from real professional
 ;; programmer. All input and critique is appreciated.
 
@@ -164,8 +159,32 @@
 ;; Solution to problem 1-18
 ; (x + 1) + 1 == 0 <=> x == -2
 (defun *1-18* (number)
+  (format t "Is (1 + ~D) + 1 == 0? ~S~%" number (zerop (*ADD1* (*ADD1* number))))
   (zerop (*ADD1* (*ADD1* number))))
+
+;; Solution to problem 1-19
+; Experiment with arguments!
+(defun *1-19* (argument)
+  (not (not argument)))
 
 ;; Solution to problem 1-20
 (defun *XOR* (a b)
   (and (not (and a b)) (or a b)))
+
+;;; Some ending remarks:
+;;; You are now, assuming you worked through the book and not just my source code,
+;;; familiar with some simple functions. You also know how to define functions
+;;; on your own!
+;;; If something seems problematic, or my supplementary remarks seemed insufficient,
+;;; please send me a message. Just have in mind, that I'm just a beginner myself.
+
+;;; What you actually should know by now:
+;;; Arithmetic operations (add, substract, multiply, divide) and how to use them
+;;; together in forming more complex equations.
+;;; Basic logic and operations on functors. You can also see that you can define
+;;; more sophisticated operators.
+;;; You had a glimpse of conditional statement.
+;;; You know basics of fromatting strings and displaying arguments.
+
+;;; I hope you had fun and this code helped you in even the slightest possible way.
+;;; Even if this help is in form of poor examples.
