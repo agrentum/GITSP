@@ -113,4 +113,38 @@
   (* number (/ 1 2)))
 
 ;; Solution to problem 1-7
-;(defun 
+(defun *MULTI-DIGIT-P* (number)
+  (> number 9))
+
+;; Solution to problem 1-8
+; Quite straightforward, returns number with reversed sign.
+(defun *1-8* (number)
+  (- 0 number))
+
+;; Solution to problem 1-9
+(defun *TWOMOREP* (number1 number2)
+  (equal number1 (*ADD2* number2)))
+
+;; Solution to problem 1-10
+(defun *TWOMOREP-1* (number1 number2)
+  (equal (*SUB2* number1) number2))
+
+;; Solution to problem 1-11
+(defun *AVERAGE* (number1 number2)
+  (/ (+ number1 number2) 2))
+
+;; Solution to problem 1-12
+(defun *MORE-THEN-A-HALF* (number1 number2)
+  (> number1 (/ number2 2)))
+
+;; Solution to problem 1-13
+(defun *1-13* (parameter)
+  (symbolp (numberp parameter)))
+
+;; Solution to problem 1-14
+(defun *1-14* ()
+  (format t "(not NIL) = ~S~%" (not NIL))
+  (format t "(not 12) = ~S~%" (not 12))
+  (format t "(not not) = ~S~%" (not 'not)))
+
+;; 
