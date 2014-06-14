@@ -131,10 +131,12 @@
 
 ;; Solution to problem 1-11
 (defun *AVERAGE* (number1 number2)
+  (format t "Average of ~D and ~D is exactly ~D~%" number1 number2 (/ (+ number1 number2) 2)) 
   (/ (+ number1 number2) 2))
 
 ;; Solution to problem 1-12
 (defun *MORE-THEN-A-HALF* (number1 number2)
+  (format t "Is ~D > ~D? ~S~%" number1 (/ number2 2) (> number1 (/ number2 2)))
   (> number1 (/ number2 2)))
 
 ;; Solution to problem 1-13
@@ -149,4 +151,5 @@
 
 ;; Solution to problem 1-15
 (defun *NOT-ONEP* (number1 number2)
+  (format t "Is ~D = ~D + 1? ~S~%" number1 number2 (equal number1 (*ADD1* number2)))
   (equal number1 (*ADD1* number2)))
