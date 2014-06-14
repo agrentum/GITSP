@@ -1,14 +1,16 @@
-;;;; Here are solutions to chapter 1 of awesome book "Gentle Introduction
-;;;; to Symbolic Computation" [1] by even more awesome David S. Touretzky.
-;;;; who provided his work free of charge. Thank you.
-;;; To finish some rough edges I have supplemented myself with tutorial
-;;; http://www.n-a-n-o.com/lisp/cmucl-tutorials/LISP-tutorial.html  [2]
+;;;;; Here are solutions to chapter 1 of awesome book "Gentle Introduction
+;;;;; to Symbolic Computation" [1] by even more awesome David S. Touretzky.
+;;;;; who provided his work free of charge. Thank you.
+;;;; To finish some rough edges I have supplemented myself with tutorial
+;;;; http://www.n-a-n-o.com/lisp/cmucl-tutorials/LISP-tutorial.html  [2]
 
-;; Everything here was coded in Emacs 23 with SLIME.
-;; +++++
-;; Stallman protects.
-;; +++++
+;;; Everything here was coded in Emacs 23 with SLIME.
+;;; +++++
+;;; Stallman protects.
+;;; +++++
 
+;; Before anything else: I'm mostly a C programmer, far from real professional
+;; programmer. All input and critique is appreciated.
 
 ;; Defined function that returns absolute value of passed number.
 ;; It uses conditional statement 'if'. The syntax is fairly straightforward:
@@ -17,6 +19,8 @@
 ;; They are covered in chapter 4 of [1], but considering how simple of
 ;; a concept is absolute value, it can't really hurt.
 ;; Read further if you find it confusing. It is used once.
+;; It is worth to note, that it is not the only possible way of implementing
+;; abs function.
 (defun *custom-abs* (a)
   (if (> a 0) a
       (- 0 a)))
@@ -27,6 +31,9 @@
   ; ~D lets you to pass number to printed sequence. equivalent to %d
 					; in C.
   ; ~% makes new line. Equivalent to \n
+  ; It is important to note, that syntax of format t is presented in chapter 9[1]
+  ; To be honest, I don't really understand the reason behind it, but that
+  ; can't even count to evaluation of book in general.
   (format t "Result of 6 + 7 is ~D ~%" (+ 6 7))
   (format t "Result of x * 4 = 12 <=> x = 12/4 = ~D ~%" (/ 12 4))
   (format t "Result of 16 / 8 = ~D~%" (/ 16 8))
@@ -48,10 +55,9 @@
   (format t "Result of x = | -5 + 3 | = ~D~%" (abs (+ (- 0 5) 3)))
   (format t "That is all!~%"))
 
-;; Solution to problem 1-2. To be honest, I'm thinking how to do it without
-;; passing string
-(defun *1-2* ()
-  (format t ""))
+;; Solution to problem 1-2. There must be something more elegant.
+;(defun *1-2* ()
+;  (format t "1-2-3-GO ~S~%" (symbolp '1-2-3-GO)))
 
 ;; Solution to problem 1-3.
 (defun *1-3* ()
@@ -100,3 +106,11 @@
 (defun *TWOP-WITH-ZEROP-AND-SUB2* (number)
   (zerop (*SUB2* number)))
 
+;; Solution to problem 1-6
+(defun *HALF-1* (number)
+  (/ number 2))
+(defun *HALF-2* (number)
+  (* number (/ 1 2)))
+
+;; Solution to problem 1-7
+;(defun 
