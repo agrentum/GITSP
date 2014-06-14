@@ -74,7 +74,6 @@
   (format t "Is 0 a zero? ~S~%" (zerop 0))
   (format t "That is all!~%"))
 
-
 ;;;Functions defined in 1.9 [1]
 
 ;; ADD1, adds 1 to passed argument.
