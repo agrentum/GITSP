@@ -147,4 +147,6 @@
   (format t "(not 12) = ~S~%" (not 12))
   (format t "(not not) = ~S~%" (not 'not)))
 
-;; 
+;; Solution to problem 1-15
+(defun *NOT-ONEP* (number1 number2)
+  (equal number1 (*ADD1* number2)))
