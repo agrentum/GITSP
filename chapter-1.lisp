@@ -7,6 +7,34 @@
 ;; Before anything else: I'm mostly a C programmer, far from real professional
 ;; programmer. All input and critique is appreciated.
 
+;;; Lets start from beginning. Lines that are starting with ';' are comments,
+;;; and they are not being read by interpreter/compiler as executable code.
+;;; Comments are a way for coder to provide some explanations of his/hers code.
+;;; General convention states (or so I was told) that the more important comment
+;;; is, the more ';' are used.
+
+;;; Another basic block is the concept of function. It does not really differ
+;;; from mathematical definition. For example, f(x) = <expression in terms of x>
+;;; is a function named f, that takes argument x and returns some value that
+;;; depends on the value of argument.
+;;; Syntax:
+;;; (defun *NAME-OF-YOUR-FUNCTION* (argument)
+;;; (expression))
+;;; You can use more arguments, provided you will separate them with space ' '.
+;; Part of convention: in common lisp, the functions you have defined start and
+;; end with '*'. Some people write name in upper-case, some don't.
+
+;;; Bit more about operation: basic syntax starts and ends with parenthesis,
+;;; and operator is used before argument(s) it operates on.
+;;; Example:
+;;; 'Normal' addition: 3 + 2
+;;; Lisp addition: (+ 3 2)
+;;; If order of operation is important (for example: dividing two numbers)
+;;; you read from left to right.
+;;; Example:
+;;; 'Normal' division: 2 / 3
+;;; Lisp division: (/ 2 3)
+
 ;; Defined function that returns absolute value of passed number.
 ;; It uses conditional statement 'if'. The syntax is fairly straightforward:
 ;; (if (condition) (what is returned if condition is indeed true)
@@ -16,9 +44,9 @@
 ;; Read further if you find it confusing. It is used once.
 ;; It is worth to note, that it is not the only possible way of implementing
 ;; abs function.
-(defun *custom-abs* (a)
-  (if (> a 0) a
-      (- 0 a)))
+(defun *CUSTOM-ABS* (number)
+  (if (> number 0) number
+      (- 0 number)))
 
 ;; Solution to problem 1-1.
 (defun *1-1* ()
@@ -33,18 +61,18 @@
   (format t "Result of x * 4 = 12 <=> x = 12/4 = ~D ~%" (/ 12 4))
   (format t "Result of 16 / 8 = ~D~%" (/ 16 8))
   (format t "Result of 4 - x = 1 <=> x = 4 - 1 ~D~%" (- 4 1))
-  ; Now we need to use builtin function abs, it returns absolute value
+  ; Now we need to use built-in function abs, it returns absolute value
 					;of passed number.
   ; But there exist another way, so this problem will be printed twice.
   (format t "Result of |-3| = ~D~%" (abs -3))
-  (format t "Now with my *custom-abs* function x = | -3 | = ~D~%" (*custom-abs* -3))
+  (format t "Now with my *custom-abs* function x = | -3 | = ~D~%" (*CUSTOM-ABS* -3))
   ; Problem below can be solved in more straightforward way, but I wanted
 					; to show how some more of the
 					;reverse polish notation
   (format t "Result of (-8)*6 = ~D~%" (* (- 0 8) 6))
   (format t "Result of 15 / 9 = ~D~%" (/ 15 9))
   (format t "Result of 8 + x = 8 <=> x = 8 - 8 ~D~%" (- 8 8))
-  (format t "Result of 5 ? 6 = -1, guessing substraction: ~S~%" (= -1 (- 5 6)))
+  (format t "Result of 5 ? 6 = -1, guessing subtraction: ~S~%" (= -1 (- 5 6)))
   (format t "Result of 1 - 1/3 = ~D~%" (- 1 (/ 1 3)))
   ; Like before, I could use -5 straight. Formula would be (abs (+ -5 3))
   (format t "Result of x = | -5 + 3 | = ~D~%" (abs (+ (- 0 5) 3)))
@@ -56,7 +84,7 @@
 
 ;; Solution to problem 1-3.
 (defun *1-3* ()
-  ; Most functions should be straightforwad or explained with string in output.
+  ; Most functions should be straightforward or explained with string in output.
   ; In other situations I will explain what each function does.
   (format t "About outputs:~%T means True, NIL means False~%")
   (format t "Is 7 < 11? ~S~%" (< 7 11))
@@ -179,12 +207,12 @@
 ;;; please send me a message. Just have in mind, that I'm just a beginner myself.
 
 ;;; What you actually should know by now:
-;;; Arithmetic operations (add, substract, multiply, divide) and how to use them
+;;; Arithmetic operations (add, subtract, multiply, divide) and how to use them
 ;;; together in forming more complex equations.
 ;;; Basic logic and operations on functors. You can also see that you can define
 ;;; more sophisticated operators.
 ;;; You had a glimpse of conditional statement.
-;;; You know basics of fromatting strings and displaying arguments.
+;;; You know basics of formatting strings and displaying arguments.
 
 ;;; I hope you had fun and this code helped you in even the slightest possible way.
 ;;; Even if this help is in form of poor examples.
