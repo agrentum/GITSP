@@ -175,6 +175,13 @@
   (> number1 (/ number2 2)))
 
 ;; Solution to problem 1-13
+; Function numberp tests if parameter is a number. Returns symbol T if parameter
+; is indeed number and NIL otherwise.
+; Function symbolp does the same, but tests wether passed parameter (in this case
+; the RESULT of (numberp parameter), not parameter!) is symbol or not.
+; Since both T and NIL are symbols, you will always get T as a result.
+; In mathematics/logic that kind of structure is called tautology. Statement
+; that is always true.
 (defun *1-13* (parameter)
   (symbolp (numberp parameter)))
 
@@ -182,6 +189,9 @@
 (defun *1-14* ()
   (format t "(not NIL) = ~S~%" (not NIL))
   (format t "(not 12) = ~S~%" (not 12))
+  ;; I think I have cheated a bit with this last problem. But it is only way
+  ;; that did not result in constant errors.
+  ;; I would like to hear some commets about it.
   (format t "(not not) = ~S~%" (not 'not)))
 
 ;; Solution to problem 1-15
