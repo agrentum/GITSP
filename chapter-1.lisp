@@ -48,6 +48,17 @@
   (if (> number 0) number
       (- 0 number)))
 
+;;; Well, I have one more thing to add. If you want to load this file and
+;;; work on it from under your Common Lisp interpreter, this is how you
+;;; load it:
+;;; [1]> (load "chapter1.lisp")
+;;; My preffered method is to open file in emacs and then run SLIME.
+;;; Here are some general pointers:
+;;; http://common-lisp.net/project/slime/
+;;; But, if you are Debian (and possibly Ubuntu or other ditributuion) user
+;;; you can install emacs with slime extension even via Synaptic.
+
+
 ;; Solution to problem 1-1.
 (defun *1-1* ()
   ; How does format t syntax work? As presented in chapter 8 of [2],
@@ -142,17 +153,27 @@
   (zerop (*SUB2* number)))
 
 ;; Solution to problem 1-6
+; Here we divide number by two.
+; number / 2 <=> (/ number 2)
 (defun *HALF-1* (number)
   (/ number 2))
+; Here we are multiplying number by 1/2.
+; number * 1/2 <=> (* number (/ 1 2))
 (defun *HALF-2* (number)
   (* number (/ 1 2)))
 
 ;; Solution to problem 1-7
+; We are just comparing number with digit 9. Since 9 is highest one-digit number
+; any number higher then 9 is by default multidigit.
+; What happens when you pass negative numbers? How can you solve this problem?
+; Solution to this brain-teaser is somewhere in the end. Read all, and you will
+; know how to do it.
 (defun *MULTI-DIGIT-P* (number)
   (> number 9))
 
 ;; Solution to problem 1-8
-; Quite straightforward, returns number with reversed sign.
+; Quite straightforward, returns number with reversed sign. It was
+; explained in definition od *1-1* function.
 (defun *1-8* (number)
   (- 0 number))
 
@@ -177,7 +198,7 @@
 ;; Solution to problem 1-13
 ; Function numberp tests if parameter is a number. Returns symbol T if parameter
 ; is indeed number and NIL otherwise.
-; Function symbolp does the same, but tests wether passed parameter (in this case
+; Function symbolp does the same, but tests whether passed parameter (in this case
 ; the RESULT of (numberp parameter), not parameter!) is symbol or not.
 ; Since both T and NIL are symbols, you will always get T as a result.
 ; In mathematics/logic that kind of structure is called tautology. Statement
@@ -193,6 +214,21 @@
   ;; that did not result in constant errors.
   ;; I would like to hear some commets about it.
   (format t "(not not) = ~S~%" (not 'not)))
+
+;;; Functions defined in 1.11 [1]
+
+;; Definition of function *NOT-EQUAL*, that tests whether two passed arguments
+;; are not exactly the same.
+; Here, instead of me explaining the details, I want you to perform some tests.
+; Pass anything. "Kirk" and "kirk", 2 and 2.0, anything. Try putting expresions
+; as parameters.
+; Try to explain the result of following test:
+; (*NOT-EQUAL* (+ 1.0 1.0) (/ 4 2))
+; Experiment with more complex types and operations. Try to work out why they
+; are not equal. The explanation is given explicitly in this source code and
+; in the book [1] itself.
+(defun *NOT-EQUAL* (parameter1 parameter2)
+  (not (equal parameter1 parameter2)))
 
 ;; Solution to problem 1-15
 (defun *NOT-ONEP* (number1 number2)
@@ -249,6 +285,18 @@
 ;;; more sophisticated operators.
 ;;; You had a glimpse of conditional statement.
 ;;; You know basics of formatting strings and displaying arguments.
+
+;;; What about the problem with multidigit numbers? Simple! I believe you have
+;;; recalled absolute value from problem 1-1. If by any reason your implementation
+;;; does not work, here is my solution:
+(defun *BETTER-MULTI-DIGIT-P* (number)
+  (> (abs number) 9))
+
+;;; There are quite a lot of 'mistakes' like that in this chapter. I hope you will
+;;; try to find them and solve them by yoursef. If by any reason you have problems,
+;;; pease, post it on original reddit thread:
+;;; http://www.reddit.com/r/learnlisp/comments/2868si/common_lisp_gentle_introduction_to_symbolic/
+;;; or send me an email / private message on reddit. (I go by username Agrentum).
 
 ;;; I hope you had fun and this code helped you in even the slightest possible way.
 ;;; Even if this help is in form of poor examples.
