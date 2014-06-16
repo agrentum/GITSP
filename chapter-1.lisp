@@ -5,9 +5,9 @@
 ;;;; http://www.n-a-n-o.com/lisp/cmucl-tutorials/LISP-tutorial.html  [2]
 
 ;; Before anything else: I'm mostly a C programmer, far from real professional
-;; programmer. All input and critique is appreciated.
+;; coder. All input and critique is appreciated.
 
-;;; Lets start from beginning. Lines that are starting with ';' are comments,
+;;; Lets start the from beginning. Lines that are starting with ';' are comments,
 ;;; and they are not being read by interpreter/compiler as executable code.
 ;;; Comments are a way for coder to provide some explanations of his/hers code.
 ;;; General convention states (or so I was told) that the more important comment
@@ -38,7 +38,7 @@
 ;; Defined function that returns absolute value of passed number.
 ;; It uses conditional statement 'if'. The syntax is fairly straightforward:
 ;; (if (condition) (what is returned if condition is indeed true)
-;; (what is returned if condition is false)
+;; (what is returned if condition is false))
 ;; They are covered in chapter 4 of [1], but considering how simple of
 ;; a concept is absolute value, it can't really hurt.
 ;; Read further if you find it confusing. It is used once.
@@ -68,7 +68,14 @@
   (format t "Now with my *custom-abs* function x = | -3 | = ~D~%" (*CUSTOM-ABS* -3))
   ; Problem below can be solved in more straightforward way, but I wanted
 					; to show how some more of the
-					;reverse polish notation
+					; reverse polish notation
+  ; You might ask, how it works. I'll try to explain:
+					; (-8) * 6 = -42, agreed.
+					; 0 - 8 = -8,
+					; now, (* -8 6) can be transformed
+					; to (* (- 0 8) 6). It works, because
+					; operations are conducted from innermost
+					; pair of parentheses.
   (format t "Result of (-8)*6 = ~D~%" (* (- 0 8) 6))
   (format t "Result of 15 / 9 = ~D~%" (/ 15 9))
   (format t "Result of 8 + x = 8 <=> x = 8 - 8 ~D~%" (- 8 8))
@@ -104,10 +111,14 @@
   (+ number 1))
 
 ;; ADD2, two ways:
-; Simple
+; Simple way, just add 2 to passed argument.
 (defun *ADD2* (number)
   (+ number 2))
-; With use of previously define ADD1
+; and equally good but with use of previously defined ADD1
+; we make use of previously mentioned in problem 1-1 'convolution' of functions.
+; How it works: ((number + 1) + 1) = number + 2.
+; In Lisp syntax, without use of previously defined function it becomes:
+; (+ 1 (+ 1 number))
 (defun *ADD2-WITH-ADD1* (number)
   (*ADD1* (*ADD1* number)))
 
@@ -118,6 +129,8 @@
   (equal number 2))
 
 ;; Solution to problem 1-4.
+; We just need to subtract 2 from number passed as argument. Remember
+; that order is important in subtraction!
 (defun *SUB2* (number)
   (- number 2))
 
@@ -177,10 +190,19 @@
   (equal number1 (*ADD1* number2)))
 
 ;; Solution to problem 1-16
+; This one is really easy, but shows again that order of operations is important.
+; All we do is comparison of number. If number < 0 <=> (< number 0) then T is
+; returned, else NIL.
 (defun *NOT-PLUSP* (number)
   (not (< number 0)))
 
 ;; Solution to problem 1-17
+;; Here we need to negate result of asking if number is odd, we do that with
+;; function oddp tests if number is odd. If it is, returns T (true). If it is not
+;; returns NIL (false). Since natural number can be either odd or even (not odd)
+;; Now, if number is odd, we negate that result and final returned value is NIL.
+;; Therefore, only if number passed is even oddp returns NIL and negated NIL
+;; is T.
 (defun *EVENP* (number)
   (not (oddp number)))
 
@@ -196,6 +218,10 @@
   (not (not argument)))
 
 ;; Solution to problem 1-20
+;; XOR is exclusive OR statement. Alternative (OR) is true if at least one element
+;; of it is true. Exclusive OR (XOR) returns value T (true) ONLY if one and only
+;; one element is true. This is, just like other problems, not the only way of
+;; implementing solution.
 (defun *XOR* (a b)
   (and (not (and a b)) (or a b)))
 
