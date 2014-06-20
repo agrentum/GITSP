@@ -19,3 +19,15 @@ explained better. I'm also a little fed up with how my high school and universit
 tried to convey programming ideas. Basically, both institutions went 'full jargon'
 of relative newbies. We had higher passing rate at Real Analysis and Vector Calculus
 then Introduction to Programming :/.
+
+I have added chapter 2, very preliminary version. I have explained some points about
+variables and intend to show some less bare-bones solutions, while keeping them
+valid and relevant.
+
+There is also small file fun.lisp that seems out of place. I want to provide some
+toy-grade code, simplistic games mostly. First one is 'guess my number'. There is
+some room for improvements and I encourage looking at it after first and begining
+of second chapter. Plan for now states: the further in code, the more complex it
+will get. But first 5-10 games I want to make (rock-paper-scissors, crabs,
+blackjack etc) using only material from first two chapters supplemented by some
+functions I coered in comments (format, random, read etc).
