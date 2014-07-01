@@ -60,7 +60,7 @@
 
 
 ;; Solution to problem 1-1.
-(defun *1-1* ()
+(defun 1-1 ()
   ; How does format t syntax work? As presented in chapter 8 of [2],
   ; ~D lets you to pass number to printed sequence. equivalent to %d
 					; in C.

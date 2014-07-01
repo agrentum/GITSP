@@ -15,14 +15,14 @@
 ;;;; Before anything related to this chapter, I want to give you one useful
 ;;;; utility: assigning variables.
 ;;;; Variable is pretty much the same as famous x in mathematics. Only you
-;;;; are not looking for its value, but can assign it youself. I will try to
+;;;; are not looking for its value, but can assign it yourself. I will try to
 ;;;; use proper coding way, that is naming variables in a way that is descriptive
 ;;;; in terms of use of variable. It is pretty important difference from
 ;;;; variables in mathematics or physics. When you are implementing some code
 ;;;; most variables and functions will have specific use. It is just not clear
 ;;;; for other people (and in really big projects: to author) that x is name of
-;;;; a client whos account balance is y etc. It is matter of convenience.
-;;;; Some rules: common lisp interpretes are case-insensitive.
+;;;; a client whose account balance is y etc. It is matter of convenience.
+;;;; Some rules: common lisp interpreters are case-insensitive.
 ;;;; Variables should be written with '-' if name consists of many separate
 ;;;; words. So, lets see three ways of naming range of weapon as variable:
 ;;;; Range of a rifle - wrong variable name, we can't use spaces and case has
@@ -42,28 +42,59 @@
 ;;;; Some more syntax and types: we can make any arbitrary set into a list by
 ;;;; putting " ' " before parenthesis. Experiment. What is different between
 ;;;; (+ 1 2) and '(+ 1 2)? Try it in interactive Common Lisp.
-
+;;;; I'm going to use them in a bad fashion, interchangeably.
 ;;;; Fully commented code will come in small steps. I'm still pretty ill.
+;;;; And as you can see, it has severe impact on my coding performance.
 
-(defun *2-1* ()
-  (write '(TO BE OR NOT TO BE)))
+(defun 2-1 ()
+  (write (list 'TO 'BE 'OR 'NOT 'TO 'BE)))
 
-(defun *2-2* ()
-  (format t "~S~%" '(A B (C)))
+(defun 2-2 ()
+  (format t "~S~%" (list 'A 'B '('C)))
   (format t "~S~%" '((A) (B)))
   (format t "~S~%" '((A B) (C D)))
   (format t "~S~%" '(A (B (C)))))
 
-(defun *2-3* ()
+(defun 2-3 ()
   '(PLEASE (BE MY) VALENTINE))
 
-(defun *2-4* ()
+(defun 2-4 ()
   '((BOWS ARROWS) (FLOWERS CHOCOLATES)))
 
-(defun *2-5* ()
-  (setq first-list '(OPEN THE POD BAY DOORS HAL))
-  (format t "~S consists of ~D elements.~%" first-list (length first-list))
-  (setq second-list '((OPEN) (THE POD BAY DOORS) HAL))
-  (format t "~S consists of ~D elements.~%" second-list (length second-list))
-  (setq third-list '((1 2 3) (4 5 6) (7 8 9) (10 11 12)))
-  (format t "~S consists of ~D elements.~%" third-list (length third-list)))
+;;; Before going further, let me tell you how sorry I am for not telling
+;;; it sooner, but I do not want to throw a lot of stuff from the beginning
+;;; but there was some other material along the way.
+;;; To use variables and give them value you need to declare it.
+;;; Chapter 1 was full of warnings caused by the fact that I have been lazy.
+;;; It still works, but it is not proper way to code.
+;;; We declare variables by use of defvar. Basic syntax is simply:
+;;; (defar name-of-variable)
+
+(defvar *first-list*)
+(defvar *second-list*)
+(defvar *third-list*)
+
+;;; But if we know what should be the value of variable, we can assign it
+;;; while declaring the variable.
+;;; Like you can see below, syntax is straightforward:
+;;; (defar name-of-variable value-of-variable)
+;;; and that value can change later, by the use of setq or other methods.
+(defvar *fourth-list* (list 'There 'Were 'Some 'States 'In 'Original 'example))
+
+;;; One last thing: you can see that I am writing it all different now.
+;;; I have been reading up about notation used, and it seems that I knew some
+;;; elements in pretty ecclecting and wrong way.
+
+;;; Global variable is a variable that is available for all code. Functions can
+;;; use them directly, can change them etc. They are written with asterisks (*)
+;;; around, to distinguish between them. I'm sorry for making a mess, chapter 1
+;;; is going to be corrected.
+
+(defun 2-5 ()
+  (setq *first-list* '(OPEN THE POD BAY DOORS HAL))
+  (format t "~S consists of ~D elements.~%" *first-list* (length *first-list*))
+  (setq *second-list* '((OPEN) (THE POD BAY DOORS) HAL))
+  (format t "~S consists of ~D elements.~%" *second-list* (length *second-list*))
+  (setq *third-list* '((1 2 3) (4 5 6) (7 8 9) (10 11 12)))
+  (format t "~S consists of ~D elements.~%" *third-list* (length *third-list*))
+	(format t "~S consists of ~D elements.~%" *fourth-list* (length *fourth-list*)))
