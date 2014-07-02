@@ -108,4 +108,18 @@
 ;;; there is no limit on nesting lists (theoretically speaking, You could probably
 ;;; waste all of your memory on it and prove it wrong ;P) and lists are not required
 ;;; to have equal number of elements.
-;;;;; Find better English translation.
+;;; Proper syntax requires from us balanced parentheses, so expression (() is invalid,
+;;; but (()(()())) is valid (count pairs and see for yourself).
+;;; Basic rule when evaluating empty lists could state: remove innermost pair of
+;;; parentheses.
+;;; So: () becomes nil, simple symbol nil.
+;;; ((()) becomes (nil), a list that contains one symbol nil.
+;;; ((())) becomes ((nil)), a list that contains one list with one element nil
+;;; (() ()) becomes (nil nil), a list with two elements nil.
+;;; (() (())) becomes (nil (nil)), a list where first element is a nil and second
+;;; is a list containing one element nil.
+;;; What could add to confusion is the fact you should remember from [1]: nil IS
+;;; an empty list.
+
+;;; Problems from 2-7 through 2-9 require a bit of an explanation about indexing.
+;;; 
