@@ -98,3 +98,14 @@
   (setq *third-list* '((1 2 3) (4 5 6) (7 8 9) (10 11 12)))
   (format t "~S consists of ~D elements.~%" *third-list* (length *third-list*))
 	(format t "~S consists of ~D elements.~%" *fourth-list* (length *fourth-list*)))
+
+;;; Problem 2-6 is one where instead of implementation I'm going to try and show
+;;; my reasoning that followed reading section 6, chapter 2 [1].
+;;; It is fairly simple. Let's start from revising concept of nested list.
+;;; This is simplest list (list 'element1 'element2)
+;;; Nested list is a list within a list, so:
+;;; (list (list 'element1-list1 'element2-list1) (list 'element1-list2 'element2-list2))
+;;; there is no limit on nesting lists (theoretically speaking, You could probably
+;;; waste all of your memory on it and prove it wrong ;P) and lists are not required
+;;; to have equal number of elements.
+;;;;; Find better English translation.
